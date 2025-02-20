@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Máy rang IOT</title>
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Nhập nhiệt độ và thời gian cho từng giai đoạn</h1>
+      <h4>
+        Nhiệt độ hiện tại:
+        <span id="temperature">Đang chờ...</span> °C
+      </h4>
+      <label for="num_stages">Số giai đoạn:</label>
+      <input
+        type="number"
+        id="num_stages"
+        min="1"
+        placeholder="Nhập số giai đoạn"
+      />
+      <button type="button" onclick="generateFields()">
+        Tạo công thức mới
+      </button>
+      <form id="stages_form">
+        <div id="stages_container"></div>
+        <div id="file-name-header"></div>
+
+        <label for="file_name_save">Tên công thức lưu:</label>
+        <input
+          type="text"
+          id="file_name_save"
+          placeholder="Tên công thức (vd: recipe)"
+        />
+
+        <button type="button" onclick="saveData()">Lưu dữ liệu</button>
+        <button type="button" onclick="runProgram()">Chạy chương trình</button>
+        <button type="button" onclick="stopProgram()">Dừng chương trình</button>
+      </form>
+    </div>
+
+    <div class="container">
+      <h1>Quản lý Công Thức</h1>
+      <button type="button" onclick="loadRecipes()">
+        Tải danh sách công thức
+      </button>
+      <ul id="recipes-list"></ul>
+
+      <label for="file_name_export">Tên công thức:</label>
+      <input type="text" id="file_name_export" placeholder="Tên công thức" />
+      <button type="button" onclick="loadData()">Xuất dữ liệu</button>
+    </div>
+    <!-- Phần tử loading (sẽ chỉ hiển thị khi chương trình chạy) -->
+    <div id="loading" style="display: none">
+      <div class="loader"></div>
+      <!-- Biểu tượng quay loading -->
+      <button type="button" id="stop-button" onclick="stopProgram()">
+        Dừng chương trình
+      </button>
+    </div>
+    <div id="message-box"></div>
+    <script src="/static/script.js"></script>
+  </body>
+</html>
